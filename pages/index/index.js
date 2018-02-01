@@ -1,39 +1,15 @@
 //index.js
 //获取应用实例
 const app = getApp();
-const { extend, Tab } = require('../../zanui/2.4.4/dist/index');
+const { extend, Tab, Toast } = require('../../zanui/2.4.4/dist/index');
+const { GET } = require('../../utils/http.js');
 
-Page(extend({}, Tab, {
+Page(extend({}, Tab, Toast, {
   data: {
     mainHeight: '100%',
     loadmore: {},
     tab1: {
-      list: [
-        {
-          id: '1',
-          title: '最新商品1'
-        },
-        {
-          id: '2',
-          title: '最新商品2'
-        },
-        {
-          id: '3',
-          title: '最新商品3'
-        },
-        {
-          id: '4',
-          title: '最新商品4'
-        },
-        {
-          id: '5',
-          title: '最新商品5'
-        },
-        {
-          id: '6',
-          title: '最新商品6'
-        }
-      ],
+      list: [],
       selectedId: '1',
       scroll: true,
       height: 45,
@@ -50,6 +26,28 @@ Page(extend({}, Tab, {
     ],
   },
   onLoad: function () { // 页面渲染后 执行
+    GET('/index.json', (res) => {
+      if (res) {
+        console.log(res);
+        let index = res[0];
+        GET(index.uri, (res2) => {
+          if (res2) {
+            this.showZanToast(`获得${res2['date']}的数据`);
+            console.log(res2['list'][0]['id']);
+            this.setData({
+              tab1: {
+                list: res2['list'],
+                selectedId: res2['list'][0]['id'],
+              },
+            });
+          } else {
+            this.showZanToast(`请求${index.uri}失败`);
+          }
+        });
+      } else {
+        this.showZanToast('请求index.json失败');
+      }
+    });
     this.nomoreShow();
   },
   onShow: function () {

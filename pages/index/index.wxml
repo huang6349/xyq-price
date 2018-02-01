@@ -1,5 +1,6 @@
 <import src="/zanui/2.4.4/dist/tab/index.wxml" />
 <import src="/zanui/2.4.4/dist/loadmore/index.wxml" />
+<import src="/zanui/2.4.4/dist/toast/index.wxml" />
 
 <!--index.wxml-->
 <view class="container">
@@ -15,4 +16,6 @@
     </view>
     <template is="zan-loadmore" data="{{ ...loadmore }}"></template>
   </scroll-view>
+  <!-- 直接使用 zan-toast 模板，并且直接传入 zanToast -->
+  <template is="zan-toast" data="{{ zanToast }}"></template>
 </view>
