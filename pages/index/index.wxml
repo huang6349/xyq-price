@@ -5,7 +5,7 @@
 <!--index.wxml-->
 <view class="container">
   <!-- type -->
-  <template is="zan-tab" data="{{ ...tab1, componentId: 'tab1' }}"></template>
+  <template wx:if="{{tab1 && tab1.list && tab1.list.length>0}}" is="zan-tab" data="{{ ...tab1, componentId: 'tab1' }}"></template>
   <!-- price -->
   <scroll-view class="main" scroll-y="true" scroll-x="false">
     <view class="zan-panel panel">
