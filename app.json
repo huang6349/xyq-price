@@ -4,9 +4,9 @@
     "pages/logs/logs"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundTextStyle": "#fff",
+    "navigationBarBackgroundColor": "#1890ff",
+    "navigationBarTitleText": "梦幻西游2物价查询器",
+    "navigationBarTextStyle": "#fff"
   }
 }
