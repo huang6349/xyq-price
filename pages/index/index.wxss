@@ -9,6 +9,8 @@ page {
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 0 solid #e5e5e5;
+  border-top-width: 1px;
 }
 
 .panel {

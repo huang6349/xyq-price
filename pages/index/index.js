@@ -52,6 +52,7 @@ Page(extend({}, Tab, Toast, {
           tab1: {
             list: res2['list'],
             selectedId: res2['list'][0]['id'],
+            scroll: true,
           },
         });
         this.loaPrice(selectedId);
